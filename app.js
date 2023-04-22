@@ -24,11 +24,15 @@ document.getElementById('score--1').textContent = '0';
 document.getElementById('current--1').textContent = '0';
 
 
+
 document.querySelector('.btn--roll').addEventListener('click', function() {
-     
-    //1. Generate a random number
-    var dice = Math.floor(Math.random() *6) +1;
+    //add the math random 
+    var dice = Math.floor(Math.random()*6 ) +1;
+    document.querySelector(.dice).textContent = dice;
     
+    //display the dice picture
+    //document.querySelector('.btn').style.display = 'block'; 
+   
     //2. Display the dice
     //we saved the value of document.querySelector('.dice) into a diceDOM variable to avoid repeating ourselves
     var diceDOM = document.querySelector('.dice');
