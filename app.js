@@ -1,18 +1,16 @@
 /*
  GAME RULES:
-
  - The game has 2 players, playing in rounds
  - In each a turn , a player roles a dice as many time as he wishes. Each result gets added to his ROUND score
- - But if the player rolls a 1, all his round score gets lost. After that, it's the playesr's next turn
- - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that it's the
+ - But if the player rolls a 1, all his round score gets lost. After that, it's the player's next turn
+ - The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that it's the
  next player's turn
- - The first player to reach 100 points on GLBAL score wins the game
-
+ - The first player to reach 100 points on GLOBAL score wins the game
 */
 
 var scores, roundScore, activePlayer;
 
-scores = [0,1];
+scores = [0,0];
 roundScore = 0;
 activePlayer = 0; 
 
@@ -29,50 +27,65 @@ document.getElementById('current--1').textContent = '0';
 
 
 
-document.querySelector('.btn--roll').addEventListener('click', function() {
-    //add the math random 
-    var dice = Math.floor(Math.random()*6 ) +1;
-    diceDOM = document.querySelector('.dice');
-    
-    //display the dice picture and let it display a random number when clicked
-    diceDOM.style.display = 'block'; 
-    diceDOM.src = 'dice-' + dice + '.png';
+document.querySelector('.btn--roll').addEventListener('click', function() { 
+    //create a variable to store result of random number
+    var dice = Math.floor(Math.random() *6) +1;
+    var diceDOM = document.querySelector('.dice') //for clean and efficient code 
 
-    //3. If dice is 1 what should hapen and what not should happen
-    if ( dice !== 1) {
+    //display the dice when roll dice is clicked on the UI
+    diceDOM.style.display = 'block';
+
+    //if the number is 1, next player's turn
+    if (dice != 1) {
         roundScore += dice;
-        document.getElementById('current--' +activePlayer).textContent = roundScore;
+
+        document.getElementById('current--' + activePlayer).textContent = roundScore;
     } else {
-        activePlayer === 0 ? activePlayer = 1: activePlayer = 0;
-        roundScore =0;
-
-        document.getElementById('current--0').textContent = '0';
-        document.getElementById('current--1').textContent = '0';
-
-        document.querySelector('.player--0').classList.toggle('player--active');
-        document.querySelector('.player--1').classList.toggle('player--active');
+        nextPlayer();
     }
+
+    //use the dom to mainpulate image
+    diceDOM.src = "dice-" + dice + ".png";
 });
+
 
 document.querySelector('.btn--hold').addEventListener('click', function() { 
     //Add CURRENT score to GLOBAL score
-
+    scores[activePlayer] += roundScore;
 
     //Update the UI
+    document.querySelector('#score--' + activePlayer).textContent = scores[activePlayer];
 
     
     //Check if player won the game
-
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name--' + activePlayer).textContent = "WINNER";
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player--' + activePlayer).classList.remove('player--active');
+    }else {
+        //Next player's turn
+        nextPlayer();
+    }
     
-
-})
+});
 
   
 
+function nextPlayer() {
+    activePlayer === 0 ? activePlayer = 1: activePlayer = 0;
+    roundScore = 0;
+
+    document.querySelector('#current--0').textContent = '0';
+    document.querySelector('#current--1').textContent = '0'; 
+
+    document.querySelector('.player--0').classList.toggle('player--active');
+    document.querySelector('.player--1').classList.toggle('player--active');
+
+    document.querySelector('.dice').style.display = 'none';
+}
 
 
-
-
+ 
 
 
 
