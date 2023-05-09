@@ -58,7 +58,7 @@ document.querySelector('.btn--hold').addEventListener('click', function() {
 
     
     //Check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
         document.querySelector('#name--' + activePlayer).textContent = "WINNER!!";
         document.querySelector('.dice').style.display = 'none';
         //document.querySelector('.player--' + activePlayer).classList.remove('player--active');
@@ -69,6 +69,24 @@ document.querySelector('.btn--hold').addEventListener('click', function() {
     }
 });
 
+document.querySelector('.btn--new').addEventListener('click', function() {
+    scores =  0;
+    activePlayer = 0;
+    roundScore = 0;
+   k
+    document.querySelector('#current--0').textContent = 0;
+    document.querySelector('#current--1').textContent = 0;
+    //document.querySelector('.current--0').textContent = 0;
+    document.querySelector('#score--0').textContent = 0;
+    document.querySelector('#score--1').textContent = 0;
+    document.querySelector('#name--0').textContent = 'Player 1';
+    document.querySelector('#name--1').textContent = 'Player 2';
+    document.querySelector('.player--0').classList.remove('player--winner');
+    document.querySelector('.player--1').classList.remove('player--winner');
+
+
+
+});
   
 
 function nextPlayer() {
