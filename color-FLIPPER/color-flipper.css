@@ -6,7 +6,7 @@
 
 body {
     font-size: 10px;
-    font-family: "Lato", sans-serif;
+    font-family: "Lato", sans-serif;  
     background-color: #f1f5f8;   
 
     
@@ -27,7 +27,7 @@ body {
     /*display: inline-block;
     margin-left: 7rem;*/
 
-
+    font-size: 17px;
     position: absolute;
     left: 28%;
     /*text-align: center;*/
@@ -42,18 +42,12 @@ body {
     color: black;
 
     text-decoration: none;  
-
+    font-size: 20px;
 }
 
 .header-one .header-three a {
     margin-left: .6rem;  
 }
-
-/*.container {
-    text-align: center;
-    margin-top: 300px;
-}*/
-
 
 
 .container {
@@ -75,18 +69,15 @@ body {
 .container
 .btn-special {
     display: block;
-    background-color: black;
-    color: #fff;
+    background-color: #F1f5f8;
+    color: black;
     /*text-align: center;*/
     margin: 15px;
-    padding: 10px;
+    padding: 10px 17px;
     border-radius: 8px;
-    transform: translate(200%, 25px);
+    transform: translate(130%, 25px);
+    text-transform: uppercase;
+    letter-spacing: 1px;;
 }
  
-
-
-
-
-
 
